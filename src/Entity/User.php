@@ -36,6 +36,19 @@ class User
      */
     private $Role;
 
+    /**
+     * User constructor.
+     * @param $Name
+     * @param $Email
+     * @param $password
+     */
+    public function __construct($Name, $Email, $password)
+    {
+        $this->setName($Name);
+        $this->setEmail($Email);
+        $this->setPassword($password);
+        $this->Role = 'Customer';
+    }
 
 
     public function getId(): ?int
@@ -90,5 +103,7 @@ class User
 
         return $this;
     }
+
+
 
 }

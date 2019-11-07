@@ -23,4 +23,8 @@ class Manager extends User
         // neemt de construct van de parent class over en gebruikt die voor zijn eigen constructor
         $this->Role = 'Manager';
     }
+
+
+
+
 }

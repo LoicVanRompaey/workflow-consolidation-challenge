@@ -19,8 +19,7 @@ class Manager extends User
      */
     public function __construct($Name, $Email, $password)
     {
-        parent::__construct($this->setName($Name), $this->setEmail($Email), $this->setPassword($password));
-        // neemt de construct van de parent class over en gebruikt die voor zijn eigen constructor
+        parent::__construct($Name,$Email,$password);
         $this->Role = 'Manager';
     }
 

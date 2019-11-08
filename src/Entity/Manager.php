@@ -6,7 +6,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-//TODO ORM\TABLE IS SUPER IMPORTANT!!! DON4T FORGET IT WITH EXTENDED CLASSES!!!!!
+// @ORM\TABLE IS SUPER IMPORTANT!!! DON'T FORGET IT WITH EXTENDED CLASSES!!!!!
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -28,6 +28,7 @@ class Manager extends User
         parent::__construct($Name,$Email,$password);
         $this->Role = 'Manager';
     }
+
 
 
 

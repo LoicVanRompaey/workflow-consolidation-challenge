@@ -4,8 +4,14 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 
-use PhpParser\Node\Name;
+//TODO ORM\TABLE IS SUPER IMPORTANT!!! DON4T FORGET IT WITH EXTENDED CLASSES!!!!!
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ */
 
 class Manager extends User
 {

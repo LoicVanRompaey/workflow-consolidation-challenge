@@ -2,146 +2,147 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity
  */
 class User
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    private $Name;
+    private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $Email;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=255, nullable=false)
      */
-    protected $Role;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="user")
-     */
-    private $tickets;
+    protected $role;
 
     /**
      * User constructor.
-     * @param $Name
-     * @param $Email
-     * @param $password
+     * @param string $name
+     * @param string $email
+     * @param string $password
      */
-    public function __construct($Name, $Email, $password)
+    public function __construct(string $name, string $email, string $password)
     {
-        $this->setName($Name);
-        $this->setEmail($Email);
-        $this->setPassword($password);
-        $this->Role = 'Customer';
-        $this->tickets = new ArrayCollection();
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
+        $this->role = '';
     }
 
-
-    public function getId(): ?int
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
     {
-        return $this->Name;
+        $this->id = $id;
     }
 
-    public function setName(string $Name): self
+    /**
+     * @return string
+     */
+    public function getName(): string
     {
-        $this->Name = $Name;
-
-        return $this;
+        return $this->name;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
     {
-        return $this->Email;
+        $this->name = $name;
     }
 
-    public function setEmail(string $Email): self
+    /**
+     * @return string
+     */
+    public function getEmail(): string
     {
-        $this->Email = $Email;
-
-        return $this;
+        return $this->email;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->Role;
-    }
-
-    public function setRole(string $Role): self
-    {
-        $this->Role = $Role;
-
-        return $this;
     }
 
     /**
-     * @return Collection|Ticket[]
+     * @return string
      */
-    public function getTickets(): Collection
+    public function getRole(): string
     {
-        return $this->tickets;
+        return $this->role;
     }
 
-    public function addTicket(Ticket $ticket): self
+    /**
+     * @param string $role
+     */
+    public function setRole(string $role): void
     {
-        if (!$this->tickets->contains($ticket)) {
-            $this->tickets[] = $ticket;
-            $ticket->setUser($this);
-        }
-
-        return $this;
+        $this->role = $role;
     }
 
-    public function removeTicket(Ticket $ticket): self
-    {
-        if ($this->tickets->contains($ticket)) {
-            $this->tickets->removeElement($ticket);
-            // set the owning side to null (unless already changed)
-            if ($ticket->getUser() === $this) {
-                $ticket->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
 
 

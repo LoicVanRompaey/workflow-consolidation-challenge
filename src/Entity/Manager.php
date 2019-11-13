@@ -26,11 +26,8 @@ class Manager extends User
     public function __construct($Name, $Email, $password)
     {
         parent::__construct($Name,$Email,$password);
-        $this->Role = 'Manager';
+        $this->role = 'Manager';
     }
-
-
-
 
 
 }

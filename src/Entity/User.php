@@ -57,13 +57,14 @@ class User implements UserInterface, \Serializable
      * @param string $name
      * @param string $email
      * @param string $password
+
      */
     public function __construct(string $name, string $email, string $password)
     {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
-        $this->role = '';
+        $this->role = ' ';
     }
 
     /**
